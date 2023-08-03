@@ -1,0 +1,47 @@
+﻿@model  BookService.User.Models.Books.BookFiltredUserViewModel
+
+@{
+    ViewData["Title"] = "Filtred";
+}
+
+<h1>Filtred</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Price
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Items) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+                
+            <td>
+                @Html.ActionLink("Подробнее", "Find", new { bookId=item.Id }) |
+                @Html.ActionLink("Добавить в корзину", "AddItem","Cart", new { bookId=item.Id}) |
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿@model BookService.User.Models.Carts.CartViewModel
+
+@{
+    ViewData["Title"] = "GetCart";
+}
+
+<h1>Корзина</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Count
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Вернуться к списку книг", "Filtred", "Book") |
+                    @Html.ActionLink("Удалить","RemoveItem","Cart", new {itemId= item.Id})|
+                </td>
+            </tr>
+        }
+        @Html.DisplayFor(x=> x.TotalPrice)
+        @Html.DisplayFor(x=> x.TotalCount)
+    </tbody>
+</table>

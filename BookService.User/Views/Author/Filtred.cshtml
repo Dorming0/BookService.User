@@ -1,0 +1,41 @@
+﻿@model  BookService.User.Models.Authors.AuthorFiltredResultUserViewModel
+
+@{
+    ViewData["Title"] = "Filtred";
+}
+
+<h1>Filtred</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+               Surname
+            </th>
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Items) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+           
+            <td>
+             
+                @Html.ActionLink("Подробнее", "Find", new { authorId=item.Id }) |
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
